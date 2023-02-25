@@ -1,13 +1,13 @@
-import Link from 'next/link'
+import Link from 'next/link';
 import React, { useState } from 'react';
-import solver from './solver'
+import solver from './solver';
 
 function Page() {
   const [inputAOC, setInputAOC] = useState('');
   const [outputAOC, setOutputAOC] = useState(['']);
 
   return (<>
-    <textarea rows={50} cols={100} placeholder="Enter your input" onChange={(e) => setInputAOC(e.target.value)} />
+    <textarea rows={30} cols={100} placeholder="Enter your input" onChange={(e) => setInputAOC(e.target.value)} />
     <br />
     <button onClick={() => {
       setOutputAOC(solver(inputAOC))

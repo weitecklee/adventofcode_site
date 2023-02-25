@@ -5,7 +5,7 @@ export default function Solver(inputAOC : string) : string[] {
   for (const line of parsedInput) {
     let num = Number(line);
     if (Number.isNaN(num)) {
-      return ["ERROR"];
+      return ['ERROR'];
     }
     num = Math.floor(num / 3) - 2;
     part1 += num;
