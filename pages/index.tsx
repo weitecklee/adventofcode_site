@@ -1,5 +1,7 @@
-import Link from 'next/link'
-import { Accordion } from 'react-bootstrap'
+import Link from 'next/link';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function HomePage() {
   const years = [];
@@ -14,22 +16,22 @@ function HomePage() {
 
   return (<>
     <div>Advent of Code Solvers (for some days)</div>
-    <Accordion>
-      {years.map((year) => (
-        <Accordion.Item key={year} eventKey={year}>
-          <Accordion.Header>
-            {year}
-          </Accordion.Header>
-          {days.map((day) => (
-            <Accordion.Body key={day}>
-              <Link href={`/${year}/${day}`}>
-                {day}
-              </Link>
-            </Accordion.Body>
+    <Navbar bg="light" expand="lg">
+      <Navbar.Toggle  aira-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav>
+          {years.map((year) => (
+            <NavDropdown key={year} title={year} id={year}>
+              {days.map((day) => (
+                <NavDropdown.Item key={day} href={`/${year}/${day}`}>
+                  {day}
+                </NavDropdown.Item>
+              ))}
+            </NavDropdown>
           ))}
-        </Accordion.Item>
-      ))}
-    </Accordion>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   </>)
 }
 
