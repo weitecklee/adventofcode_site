@@ -17,7 +17,7 @@ function HomePage() {
   return (<>
     <div>Advent of Code Solvers (for some days)</div>
     <Navbar bg="light" expand="lg">
-      <Navbar.Toggle  aira-controls="basic-navbar-nav" />
+      <Navbar.Toggle  aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav>
           {years.map((year) => (
