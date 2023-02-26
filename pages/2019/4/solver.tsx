@@ -7,22 +7,30 @@ export default function Solver(inputAOC : string) : string[] {
   let part1 = 0;
   let part2 = 0;
 
-  for (let i = parsedInput[0]; i <= parsedInput[1]; i++) {
-    let doubleDigits = false;
-    let increasingDigits = true;
-    const numStr = i.toString().split('').map(Number);
+  const re = new RegExp(`(.)\\1+`, 'g')
 
-    for (let j = 1; j < numStr.length; j++) {
-      if (numStr[j] < numStr[j - 1]) {
+  for (let i = parsedInput[0]; i <= parsedInput[1]; i++) {
+    let increasingDigits = true;
+    const numStr = i.toString();
+    const numArr = numStr.split('').map(Number);
+
+    for (let j = 1; j < numArr.length; j++) {
+      if (numArr[j] < numArr[j - 1]) {
         increasingDigits = false;
         break;
       }
-      if (numStr[j] === numStr[j - 1]) {
-        doubleDigits = true;
-      }
     }
-    if (increasingDigits && doubleDigits) {
+
+    if (!increasingDigits) {
+      continue;
+    }
+
+    const matches = numStr.match(re);
+    if (matches !== null) {
       part1++;
+      if (matches.some((a) => a.length === 2)) {
+        part2++;
+      }
     }
   }
 
