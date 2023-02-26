@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React, { useState } from 'react';
 import solver from './solver';
 
@@ -13,7 +12,6 @@ function Page() {
       setOutputAOC(solver(inputAOC))
     }}>Solve it!</button>
     {outputAOC.map((text, i) => <div key={i}>{text}</div>)}
-    <Link href="/">Go back!</Link>
   </>)
 }
 
