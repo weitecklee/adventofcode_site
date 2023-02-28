@@ -6,7 +6,7 @@ export default function Solver(inputAOC : string) : string[] {
   const parsedInput2 = parsedInput.slice();
 
   let part1 = 0;
-  let singleInput = 1;
+  const singleInput = 1;
 
   let i = 0;
 
@@ -65,7 +65,7 @@ export default function Solver(inputAOC : string) : string[] {
   }
 
   let part2 = 0;
-  let singleInput2 = 5;
+  const singleInput2 = 5;
 
   i = 0;
 

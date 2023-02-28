@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -7,12 +6,12 @@ function TopBar() {
   const years = [];
   for (let i = 2015; i <= 2022; i++) {
     years.push(i);
-  };
+  }
 
   const days = [];
   for (let i = 1; i <= 25; i++) {
     days.push(i);
-  };
+  }
 
   return (<>
     <Navbar bg="light" expand="lg">
