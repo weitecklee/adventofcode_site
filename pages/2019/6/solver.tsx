@@ -32,8 +32,8 @@ export default function Solver(inputAOC : string) : string[] {
 
   countOrbits('COM', 0);
 
-  for (const orb of orbits) {
-    part1 += orbits.get(orb);
+  for (const count of orbits.values()) {
+    part1 += count;
   }
 
   const checked = new Set(['YOU']);
