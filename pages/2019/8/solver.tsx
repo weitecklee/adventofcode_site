@@ -5,7 +5,6 @@ export default function Solver(inputAOC : string) : string[] {
   }
 
   let part1 = 0;
-  let part2 = 0;
 
   const width = 25;
   const height = 6;
@@ -53,6 +52,18 @@ export default function Solver(inputAOC : string) : string[] {
     }
   }
 
-  return [part1.toString(), part2.toString()];
+  const part2 = [];
+  for (let i = 0; i < height; i++) {
+    part2.push('');
+    for (let j = 0; j < width; j++) {
+      let k = 0;
+      while (k < layers.length && layers[k][i][j] === 2) {
+        k++;
+      }
+      part2[i] += layers[k][i][j] ?? 2;
+    }
+  }
+
+  return [part1.toString(), ...part2];
 }
 

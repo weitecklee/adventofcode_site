@@ -1,0 +1,9 @@
+.code {
+  font-family: "Lucida Console", "Courier New", monospace;
+  color: lightgrey
+}
+
+.code .highlight {
+  font-weight: 700;
+  color: black
+}

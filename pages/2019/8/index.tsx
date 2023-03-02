@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import solver from './solver';
 import testInput from './defaultInput';
+import reactStringReplace from 'react-string-replace';
 
 function Page() {
   const [inputAOC, setInputAOC] = useState(testInput);
@@ -12,7 +13,12 @@ function Page() {
     <button onClick={() => {
       setOutputAOC(solver(inputAOC))
     }}>Solve it!</button>
-    {outputAOC.map((text, i) => <div key={i}>{text}</div>)}
+    {outputAOC.map((text, i) => {
+      if (i < 1) {
+        return <div key={i}>{text}</div>;
+      }
+      return <div className="code" key={i}>{reactStringReplace(text, '1', (match) => <span className="highlight">{match}</span>)}</div>
+    })}
   </>)
 }
 
