@@ -2,7 +2,7 @@ export default function Solver(inputAOC: string): string[] {
   const parsedInput = inputAOC.split('\n');
 
   let part1 = 0;
-  let part2 = 0;
+  let part2 = "";
 
   let twoCount = 0;
   let threeCount = 0;
@@ -34,7 +34,32 @@ export default function Solver(inputAOC: string): string[] {
     }
   }
 
+  for (let i = 0; i < parsedInput.length; i++) {
+    for (let j = i + 1; j < parsedInput.length; j++) {
+      let diff = 0;
+      for (let k = 0; k < parsedInput[i].length; k++) {
+        if (parsedInput[i][k] !== parsedInput[j][k]) {
+          diff++;
+          if (diff > 1) {
+            break;
+          }
+        }
+      }
+      if (diff === 1) {
+        for (let k = 0; k < parsedInput[i].length; k++) {
+          if (parsedInput[i][k] === parsedInput[j][k]) {
+            part2 += parsedInput[i][k];
+          }
+        }
+        break;
+      }
+    }
+    if (part2.length > 0) {
+      break;
+    }
+  }
+
   part1 = twoCount * threeCount;
-  return [part1.toString(), part2.toString()];
+  return [part1.toString(), part2];
 }
 
