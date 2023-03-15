@@ -26,6 +26,31 @@ export default function Solver(inputAOC: string): string[] {
     }
   }
 
+  for (const line of parsedInput) {
+    const matches = line.match(/\d+/g);
+    const x = Number(matches[1]);
+    const y = Number(matches[2]);
+    const w = Number(matches[3]);
+    const h = Number(matches[4]);
+    let overlap = false;
+    for (let i = 0; i < w; i++) {
+      for (let j = 0; j < h; j++) {
+        const loc = (x + i) + ',' + (y + j);
+        if (fabric.get(loc) > 1) {
+          overlap = true;
+          break;
+        }
+      }
+      if (overlap) {
+        break;
+      }
+    }
+    if (!overlap) {
+      part2 = matches[0];
+      break;
+    }
+  }
+
   return [part1.toString(), part2];
 }
 
