@@ -2,7 +2,7 @@ export default function Solver(inputAOC: string): string[] {
   const parsedInput = inputAOC.split('\n');
 
   let part1 = 0;
-  let part2 = "";
+  let part2 = 0;
 
   parsedInput.sort();
 
@@ -29,15 +29,15 @@ export default function Solver(inputAOC: string): string[] {
     }
 
     report(): number[] {
-      let maxSleep = 0;
+      let sleepyMinuteTotal = 0;
       let sleepyMinute = 0;
       for (const [minute, duration] of this.sleepMinutes) {
-        if (duration > maxSleep) {
-          maxSleep = duration;
+        if (duration > sleepyMinuteTotal) {
+          sleepyMinuteTotal = duration;
           sleepyMinute = minute;
         }
       }
-      return [this.sleepTotal, sleepyMinute];
+      return [this.sleepTotal, sleepyMinute, sleepyMinuteTotal];
     }
   }
 
@@ -59,15 +59,20 @@ export default function Solver(inputAOC: string): string[] {
     }
   }
 
-  let maxSleep = 0;
+  let maxSleepyTotal = 0;
+  let maxSleepyMinuteTotal = 0;
   for (const [guardId, guard] of guards) {
-    const [sleepTotal, maxMinute] = guard.report();
-    if (sleepTotal > maxSleep) {
-      maxSleep = sleepTotal;
-      part1 = Number(guardId) * maxMinute;
+    const [sleepTotal, sleepyMinute, sleepyMinuteTotal] = guard.report();
+    if (sleepTotal > maxSleepyTotal) {
+      maxSleepyTotal = sleepTotal;
+      part1 = Number(guardId) * sleepyMinute;
+    }
+    if (sleepyMinuteTotal > maxSleepyMinuteTotal) {
+      maxSleepyMinuteTotal = sleepyMinuteTotal;
+      part2 = Number(guardId) * sleepyMinute;
     }
   }
 
-  return [part1.toString(), part2];
+  return [part1.toString(), part2.toString()];
 }
 
