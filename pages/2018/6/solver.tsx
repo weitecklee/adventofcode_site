@@ -93,6 +93,23 @@ export default function Solver(inputAOC: string): string[] {
     }
   }
 
+  const range = 10000 - 1;
+  for (let i = xMin - range; i <= xMin + range; i++) {
+    for (let j = yMin - range; j <= yMin + range; j++) {
+      let withinRange = true;
+      let totalDist = 0;
+      for (const [x, y] of points) {
+        totalDist += Math.abs(x - i) + Math.abs(y - j);
+        if (totalDist > range) {
+          withinRange = false;
+          break;
+        }
+      }
+      if (withinRange) {
+        part2++;
+      }
+    }
+  }
   return [part1.toString(), part2.toString()];
 }
 

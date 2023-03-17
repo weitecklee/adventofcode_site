@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import solver from './solver';
-import testInput from './testInput';
+import testInput from './defaultInput';
 
 function Page() {
   const [inputAOC, setInputAOC] = useState(testInput);
