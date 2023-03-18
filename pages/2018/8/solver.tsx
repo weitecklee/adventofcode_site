@@ -7,10 +7,12 @@ export default function Solver(inputAOC: string): string[] {
   class Node {
     children: Node[];
     metadata: number[];
+    value: number;
 
     constructor() {
       this.children = [];
       this.metadata = [];
+      this.value = 0;
     }
   }
 
@@ -28,10 +30,17 @@ export default function Solver(inputAOC: string): string[] {
       node.metadata.push(metadata);
       part1 += metadata;
     }
+    if (nChildren) {
+      node.value = node.metadata.reduce((a, b) =>  a + (b <= node.children.length ? node.children[b - 1].value : 0), 0);
+    } else {
+      node.value = node.metadata.reduce((a, b) => a + b);
+    }
     return [node, j];
   }
 
-  makeNode(0);
+  const [rootNode] = makeNode(0);
+
+  part2 = rootNode.value;
 
   return [part1.toString(), part2.toString()];
 }
